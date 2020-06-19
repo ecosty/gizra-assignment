@@ -1,0 +1,5 @@
+# You can remove the above line if you want to edit and maintain this file yourself.
+
+/drushrc.php
+/default.services.yml
+/default.settings.php
