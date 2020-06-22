@@ -1,0 +1,6 @@
+name: Custom Group Module
+description: Custom module to customize Organic Groups functionality.
+package: Custom
+
+type: module
+core: 8.x

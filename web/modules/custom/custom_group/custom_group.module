@@ -1,0 +1,23 @@
+<?php
+
+use \Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\custom_group\Event\EntityViewEvent;
+
+/**
+ * Implements hook_entity_view().
+ *
+ * @param array $build
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
+ * @param [type] $view_mode
+ * @return void
+ */
+function custom_group_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Instantiate my event called EntityViewEvent.
+  $event = new EntityViewEvent($build, $entity, $display, $view_mode);
+
+  // Get the event_dispatcher service and dispatch the event.
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch(EntityViewEvent::ENTITY_VIEW, $event);
+}

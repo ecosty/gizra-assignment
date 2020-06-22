@@ -1,0 +1,11 @@
+# Create a new service tagged with the 'event_subscriber' tag.
+# This tells the service container, and by proxy the
+# event dispatcher service, that the class registered here can be queried to get
+# a list of events that it would like to be notified about.
+services:
+  custom_group.entity_view:
+    # Point to the class that will contain my implementation of
+    # \Symfony\Component\EventDispatcher\EventSubscriberInterface
+    class: Drupal\custom_group\EventSubscriber\EntityViewSubscriber
+    tags:
+      - {name: event_subscriber}
